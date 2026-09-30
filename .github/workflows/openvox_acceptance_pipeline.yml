@@ -3,7 +3,7 @@ name: Beaker Acceptance Pipeline for OpenVox
 run-name: |-
   Beaker acceptance tests for all openvox projects
   on ${{ inputs.guest-arch }} runners using
-  ${{ inputs.pre-release-build && 'pre-release' || 'release' }}
+  ${{ inputs.fips && 'FIPS ' || '' }}${{ inputs.pre-release-build && 'pre-release' || 'release' }}
   packages of openvox-agent
   ${{ (inputs.pre-release-build && inputs.openvox-agent-version) ||
       format(' collection: "{0}", version: "{1}" ',
@@ -118,6 +118,14 @@ on:
           (5x-20x).
         type: string
         default: 'x86_64'
+      fips:
+        description: |-
+          Test the redhatfips packages on AlmaLinux VMs in FIPS
+          mode, one per redhatfips build platform, instead of the
+          regular packages on the regular matrix. All versions must
+          then name builds that have redhatfips packages.
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -149,3 +157,4 @@ jobs:
       openvoxdb-pre-release-build: ${{ inputs.pre-release-build }}
       artifacts-url: ${{ inputs.artifacts-url }}
       guest-arch: ${{ inputs.guest-arch }}
+      fips: ${{ inputs.fips }}

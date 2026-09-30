@@ -21,6 +21,14 @@ This pipeline isn't doing anything different than the individual project pipelin
 
 All of these pipelines use [beaker_acceptance.yml](https://github.com/OpenVoxProject/shared-actions/blob/main/.github/workflows/beaker_acceptance.yml) under the hood. The pipeline, at the moment, is just a convenience for running them all in one spot and referencing all the results together for one identified collection of packages.
 
+#### FIPS Support
+
+Setting `fips` to `true` runs the suites against the redhatfips
+packages on AlmaLinux VMs that are switched to FIPS mode before the
+packages are installed. See the FIPS section of the
+[shared-actions README](https://github.com/OpenVoxProject/shared-actions#fips-support)
+for the matrix and the version inputs.
+
 #### Arm64 Support
 
 You can run the acceptance pipeline on arm64 guests in gha by
