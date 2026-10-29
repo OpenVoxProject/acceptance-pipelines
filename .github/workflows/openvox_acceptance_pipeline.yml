@@ -164,6 +164,9 @@ jobs:
       artifacts-url: ${{ inputs.artifacts-url }}
       guest-arch: ${{ inputs.guest-arch }}
       fips: ${{ inputs.fips }}
+    secrets:
+      GCS_ACCESS_KEY_ID: ${{ secrets.GCS_ACCESS_KEY_ID }}
+      GCS_SECRET_ACCESS_KEY: ${{ secrets.GCS_SECRET_ACCESS_KEY }}
   acceptance_dev:
     if: ${{ inputs.use_dev }}
     strategy:
@@ -192,3 +195,6 @@ jobs:
       artifacts-url: ${{ inputs.artifacts-url }}
       guest-arch: ${{ inputs.guest-arch }}
       fips: ${{ inputs.fips }}
+    secrets:
+      GCS_ACCESS_KEY_ID: ${{ secrets.GCS_ACCESS_KEY_ID }}
+      GCS_SECRET_ACCESS_KEY: ${{ secrets.GCS_SECRET_ACCESS_KEY }}
